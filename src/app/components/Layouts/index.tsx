@@ -18,7 +18,7 @@ export default function LayoutContainer({ children }: Props) {
         </header>
         <hr className="border-x-orange-200 min-w-full" />
         {children}
-        <footer className="flex flex-col h-96 justify-end">
+        <footer className="flex flex-col justify-start">
           <Image
             src="/images/grupo-acert.svg"
             alt="Logo"

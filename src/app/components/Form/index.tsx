@@ -57,9 +57,8 @@ export const Form = ({ toggle }: Props) => {
         <label className="font-mono text-black text-xl font-bold mb-3">
           Descrição
         </label>
-        <input
+        <textarea
           {...register("description")}
-          type="text"
           className="w-64 h-14 rounded-sm bg-white text-black shadow-md"
           maxLength={255}
         />
