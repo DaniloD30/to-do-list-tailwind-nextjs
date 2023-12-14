@@ -3,8 +3,20 @@ import CardTask from "../components/Card";
 import LayoutContainer from "../components/Layouts";
 import FilterSelect from "../components/FilterSelect";
 import ButtonAddTask from "../components/ButtonAddTask";
+import { useRouter } from "next/navigation";
+import { useLogin } from "../contexts/LoginContext";
+import { useEffect } from "react";
 
 export default function ToDoList() {
+  const router = useRouter();
+  const { isUserLoggedIn } = useLogin();
+
+  useEffect(() => {
+    if (!isUserLoggedIn()) {
+      router.push("/");
+    }
+  }, [router, isUserLoggedIn]);
+
   return (
     <>
       <LayoutContainer>

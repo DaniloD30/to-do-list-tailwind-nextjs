@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuidv4 } from "uuid";
+import { useLogin } from "@/app/contexts/LoginContext";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   id: z.string(),
@@ -17,6 +19,8 @@ const schema = z.object({
 type FormDataProps = z.infer<typeof schema>;
 
 export const FormLogin = () => {
+  const { handleUserSave } = useLogin();
+  const router = useRouter()
   const {
     handleSubmit,
     register,
@@ -32,8 +36,10 @@ export const FormLogin = () => {
     },
   });
 
-  const onSubmitForm = () => {
+  const onSubmitForm = (data: FormDataProps) => {
     //TODO: Salvar o objeto user no contexto
+    handleUserSave(data);
+    router.push('/to-do-list')
   };
 
   return (
