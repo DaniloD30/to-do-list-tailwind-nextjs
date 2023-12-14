@@ -1,16 +1,9 @@
 import Image from "next/image";
+import LayoutContainer from "./components/Layouts";
 
 export default function Home() {
   return (
-    <main   
-      className="flex min-h-screen 
-    flex-col items-center"
-    >
-      <header className="flex flex-col h-20 justify-center">
-        <h3 className="font-mono text-4xl text-black font-extrabold">
-          To do List
-        </h3>
-      </header>
+    <LayoutContainer>
       <div className="flex flex-col h-96 justify-center">
         <p className="font-mono text-black text-2xl font-bold mb-3">Login:</p>
         <input
@@ -21,15 +14,6 @@ export default function Home() {
           Entrar
         </button>
       </div>
-      <footer className="flex flex-col h-96 justify-center">
-        <Image
-          src="/images/grupo-acert.svg"
-          alt="Logo"
-          width={200}
-          height={100}
-          loading="lazy"
-        />
-      </footer>
-    </main>
+    </LayoutContainer>
   );
 }

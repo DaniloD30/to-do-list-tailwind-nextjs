@@ -1,3 +1,4 @@
+"use client";
 import { ReactNode } from "react";
 
 interface ModalType {
@@ -13,7 +14,7 @@ export default function Modal(props: ModalType) {
         <div
           className="flex justify-center 
           items-center z-50 w-screen 
-          max-h-screen absolute top-0 bg-stone-700"
+          min-h-screen absolute top-0 bg-[#ffec9bd6]"
           onClick={props.toggle}
         >
           <div
