@@ -25,7 +25,7 @@ export default function FilterSelect() {
           )
         }
       >
-        <option selected value="all">
+        <option value="all">
           Todas as tarefas
         </option>
         <option value="done">Concluídas</option>
