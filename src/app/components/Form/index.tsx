@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuidv4 } from "uuid";
+import { useTask } from "@/app/contexts/TaskContext";
 
 const schema = z.object({
   id: z.string(),
   title: z.string().trim().min(1, { message: "Obrigatório*" }),
   description: z.string().optional(),
+  isPending: z.boolean(),
 });
 
 interface Props {
@@ -17,6 +19,7 @@ interface Props {
 type FormDataProps = z.infer<typeof schema>;
 
 export const Form = ({ toggle }: Props) => {
+  const { handleAddTask } = useTask();
   const {
     handleSubmit,
     register,
@@ -29,10 +32,12 @@ export const Form = ({ toggle }: Props) => {
       id: uuidv4(),
       title: "",
       description: "",
+      isPending: true,
     },
   });
 
-  const onSubmitForm = () => {
+  const onSubmitForm = (data: FormDataProps) => {
+    handleAddTask(data);
     toggle();
   };
 

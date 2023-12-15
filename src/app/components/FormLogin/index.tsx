@@ -37,7 +37,6 @@ export const FormLogin = () => {
   });
 
   const onSubmitForm = (data: FormDataProps) => {
-    //TODO: Salvar o objeto user no contexto
     handleUserSave(data);
     router.push('/to-do-list')
   };

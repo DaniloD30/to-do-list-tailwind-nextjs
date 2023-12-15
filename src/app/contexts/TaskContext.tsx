@@ -10,8 +10,9 @@ import { Task } from "../interfaces/TaskInterface";
 
 interface TaskContextData {
   handleAddTask: (data: Task) => void;
-  handleRemoveTask: (id: number) => void;
+  handleRemoveTask: (id: string) => void;
   handleFilterTask: (type: string) => void;
+  handleDoneTask: (index:number) => void;
   task: Task[];
 }
 
@@ -33,7 +34,7 @@ export function TaskContextProvider({
   }, []);
 
   const handleRemoveTask = useCallback(
-    (id: number) => {
+    (id: string) => {
       const newArr = task.filter((a) => a.id !== id);
       setTask(newArr);
     },
@@ -54,29 +55,19 @@ export function TaskContextProvider({
     [task]
   );
 
-  // const handleAddTask = (data: Task) => {
-  //   setTask((prevState) => [...prevState, data]);
-  // };
-
-  // const handleRemoveTask = (id: number) => {
-  //   const newArr = [...task].filter((a) => a.id !== id);
-  //   setTask(newArr);
-  // };
-
-  // const handleFilterTask = (type: string) => {
-  //   if (type === "done") {
-  //     const newArr = task.filter((a) => !!a.isPending);
-  //     setTask(newArr);
-  //     return;
-  //   }
-
-  //   const newArr = task.filter((a) => !a.isPending);
-  //   setTask(newArr);
-  // };
+  const handleDoneTask = useCallback(
+    (index: number) => {
+      const newArr = [...task];
+      newArr[index].isPending = !newArr[index].isPending
+      setTask(newArr);
+    },
+    [task]
+  );
 
   return (
     <TaskContext.Provider
       value={{
+        handleDoneTask,
         handleAddTask,
         handleRemoveTask,
         handleFilterTask,
