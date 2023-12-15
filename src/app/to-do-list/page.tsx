@@ -11,7 +11,7 @@ import { useTask } from "../contexts/TaskContext";
 export default function ToDoList() {
   const router = useRouter();
   const { isUserLoggedIn } = useLogin();
-  const { task } = useTask();
+  const { task, typeFilter } = useTask();
 
   useEffect(() => {
     if (!isUserLoggedIn()) {
@@ -28,36 +28,29 @@ export default function ToDoList() {
         </div>
         <hr className="border-x-orange-200 min-w-full" />
         <div className="flex w-11/12 flex-wrap max-h-[25%] overflow-y-scroll p-8 gap-5">
-          {task.map((item, key) => (
-            <CardTask
-              key={`${key}-${item.title}`}
-              id={item.id}
-              index={key}
-              title={item.title}
-              description={item.description}
-              isPending={item.isPending}
-            />
-          ))}
-          {/* <CardTask
-            title="Estudar"
-            description="Estudar matérias de estrutura"
-            isPending={false}
-          />
-          <CardTask
-            title="Estudar"
-            description="Estudar matérias de estrutura"
-            isPending={true}
-          />
-          <CardTask
-            title="Estudar"
-            description="Estudar matérias de estrutura"
-            isPending={true}
-          />
-          <CardTask
-            title="Estudar"
-            description="Estudar matérias de estrutura"
-            isPending={true}
-          /> */}
+          {typeFilter === "all"
+            ? task.map((item, key) => (
+                <CardTask
+                  key={`${key}-${item.title}`}
+                  id={item.id}
+                  index={key}
+                  title={item.title}
+                  description={item.description}
+                  isPending={item.isPending}
+                />
+              ))
+            : task
+                .filter((task) => task.filterType == typeFilter)
+                .map((item, key) => (
+                  <CardTask
+                    key={`${key}-${item.title}`}
+                    id={item.id}
+                    index={key}
+                    title={item.title}
+                    description={item.description}
+                    isPending={item.isPending}
+                  />
+                ))}
         </div>
       </LayoutContainer>
     </>

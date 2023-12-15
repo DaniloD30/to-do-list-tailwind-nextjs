@@ -3,4 +3,5 @@ export interface Task {
   title: string;
   description?: string;
   isPending: boolean;
+  filterType: "done" | "pending" | "all";
 }

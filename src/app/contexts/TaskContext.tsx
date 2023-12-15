@@ -11,8 +11,9 @@ import { Task } from "../interfaces/TaskInterface";
 interface TaskContextData {
   handleAddTask: (data: Task) => void;
   handleRemoveTask: (id: string) => void;
-  handleFilterTask: (type: string) => void;
-  handleDoneTask: (index:number) => void;
+  handleFilterTask: (type: "all" | "done" | "pending") => void;
+  handleDoneTask: (index: number) => void;
+  typeFilter: "all" | "done" | "pending";
   task: Task[];
 }
 
@@ -28,6 +29,9 @@ export function TaskContextProvider({
   modalInitialValue,
 }: TaskContextProviderProps) {
   const [task, setTask] = useState<Task[]>(modalInitialValue);
+  const [typeFilter, setTypeFilter] = useState<"all" | "done" | "pending">(
+    "all"
+  );
 
   const handleAddTask = useCallback((data: Task) => {
     setTask((prevState) => [...prevState, data]);
@@ -42,15 +46,24 @@ export function TaskContextProvider({
   );
 
   const handleFilterTask = useCallback(
-    (type: string) => {
-      if (type === "done") {
-        const newArr = task.filter((a) => !!a.isPending);
-        setTask(newArr);
-        return;
-      }
+    (type: "all" | "done" | "pending") => {
+      const newArr = [...task];
 
-      const newArr = task.filter((a) => !a.isPending);
-      setTask(newArr);
+      const updatedTasks: Task[] = newArr.map((element) => ({
+        ...element,
+        filterType:
+          type === "all"
+            ? "all"
+            : type === "done" && !element.isPending
+            ? "done"
+            : type === "pending" && element.isPending
+            ? "pending"
+            : "all",
+      }));
+
+      setTask(updatedTasks);
+      setTypeFilter(type);
+      return;
     },
     [task]
   );
@@ -58,7 +71,8 @@ export function TaskContextProvider({
   const handleDoneTask = useCallback(
     (index: number) => {
       const newArr = [...task];
-      newArr[index].isPending = !newArr[index].isPending
+      newArr[index].isPending = !newArr[index].isPending;
+      newArr[index].filterType = !newArr[index].isPending ? "done" : "pending";
       setTask(newArr);
     },
     [task]
@@ -70,6 +84,7 @@ export function TaskContextProvider({
         handleDoneTask,
         handleAddTask,
         handleRemoveTask,
+        typeFilter,
         handleFilterTask,
         task,
       }}

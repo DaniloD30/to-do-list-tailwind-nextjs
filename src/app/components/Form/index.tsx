@@ -10,6 +10,7 @@ const schema = z.object({
   title: z.string().trim().min(1, { message: "Obrigatório*" }),
   description: z.string().optional(),
   isPending: z.boolean(),
+  filterType: z.enum(["all", "done", "pending"]),
 });
 
 interface Props {
@@ -33,6 +34,7 @@ export const Form = ({ toggle }: Props) => {
       title: "",
       description: "",
       isPending: true,
+      filterType: "all",
     },
   });
 

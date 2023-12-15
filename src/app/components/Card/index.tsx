@@ -24,8 +24,12 @@ export default function CardTask({
   const { handleRemoveTask, handleDoneTask } = useTask();
   return (
     <div className="w-64 h-48 p-2 rounded-sm  bg-white shadow-md">
-      <div className="text-2xl font-extrabold text-black">{title} 1</div>
-      <div className="text-base font-bold text-black">{description}</div>
+      <div className="text-2xl font-extrabold text-black text-ellipsis overflow-hidden w-48">
+        {title}
+      </div>
+      <div className="max-h-16 w-[230px] overflow-y-scroll">
+        <p className="text-base font-bold text-black break-words">{description}</p>
+      </div>
       <div className="flex mt-2 justify-end gap-3">
         <button className="text-black" onClick={() => handleDoneTask(index)}>
           <Image
