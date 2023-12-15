@@ -45,7 +45,7 @@ export default function CardTask({
             src={"/icons/icon-trash.png"}
             width={32}
             height={32}
-            alt="icon-pending"
+            alt="icon-delete"
             loading="lazy"
           />
         </button>
