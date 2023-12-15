@@ -26,6 +26,7 @@ export default function ButtonAddTask() {
           width={32}
           height={32}
           alt="icon-add"
+          loading="lazy"
         />
       </button>
     </>

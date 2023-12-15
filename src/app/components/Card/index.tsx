@@ -37,6 +37,7 @@ export default function CardTask({
             width={32}
             height={32}
             alt="icon-status"
+            loading="lazy"
           />
         </button>
         <button className="text-black" onClick={() => handleRemoveTask(id)}>
@@ -45,6 +46,7 @@ export default function CardTask({
             width={32}
             height={32}
             alt="icon-pending"
+            loading="lazy"
           />
         </button>
       </div>
