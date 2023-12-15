@@ -52,6 +52,7 @@ export const FormLogin = () => {
         </label>
         <input
           {...register("email")}
+          data-testid="email"
           type="text"
           className="w-64 h-14 rounded-sm bg-white text-black shadow-md"
           maxLength={255}
@@ -64,6 +65,7 @@ export const FormLogin = () => {
         </label>
         <input
           {...register("pass")}
+          data-testid="pass"
           type="password"
           className="w-64 h-14 rounded-sm bg-white text-black shadow-md"
           maxLength={64}
