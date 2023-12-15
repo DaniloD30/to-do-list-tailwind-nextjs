@@ -54,6 +54,7 @@ export const Form = ({ toggle }: Props) => {
         </label>
         <input
           {...register("title")}
+          data-testid="inputTitle"
           type="text"
           className="w-64 h-14 rounded-sm bg-white text-black shadow-md"
           maxLength={255}

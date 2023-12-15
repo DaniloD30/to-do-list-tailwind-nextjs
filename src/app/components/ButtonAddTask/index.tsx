@@ -17,6 +17,7 @@ export default function ButtonAddTask() {
         <Form toggle={toggle} />
       </Modal>
       <button
+        data-testid="addButton"
         onClick={toggle}
         className=" flex items-center justify-center gap-2 w-56 h-10 rounded-xl bg-black shadow-md hover:bg-slate-500"
       >
