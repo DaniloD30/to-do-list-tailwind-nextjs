@@ -2,6 +2,11 @@
 
 Este projeto utiliza o [NextJS](https://nextjs.org/) com [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/), testes unitários com [Jest](https://jestjs.io/pt-BR/) e [Cypress](https://www.cypress.io/) para testes end-to-end.
 
+## Deploy
+
+Link para visistar a aplicação:
+- [To Do List NextJS!](https://to-do-list-tailwind-nextjs.vercel.app/) 
+
 ## Pré-requisitos
 
 - Node.js (v18.12.1)
