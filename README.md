@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# To Do List Grupo Acert
 
-## Getting Started
+Este projeto utiliza o [NextJS](https://nextjs.org/) com [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/), testes unitários com [Jest](https://jestjs.io/pt-BR/) e [Cypress](https://www.cypress.io/) para testes end-to-end.
 
-First, run the development server:
+## Pré-requisitos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v18.12.1)
+- Npm
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Configuração inicial
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone o repositório;
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Navegue até o diretório do projeto;
 
-## Learn More
+3. Instale as dependências:
 
-To learn more about Next.js, take a look at the following resources:
+`npm install`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Executando o projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+`npm run start`
 
-## Deploy on Vercel
+## Executando os testes unitários
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+É necessário apenas executar o comando de testes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`npm run test`
+
+## Executando os testes e2e
+
+É necessário executar o projeto em localhost para que seja feito o teste e2e
+
+`npm run cypress:open`
+
+## Informações Adicionais
+
+As informações de Login para teste são um login válido e uma senha maior que 1
+
